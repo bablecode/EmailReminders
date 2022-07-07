@@ -1,0 +1,383 @@
+
+$primary: #252A5C;
+$secondary: #63a1e3;
+$box-highligh: #74a8e7;
+$row-unselected: rgba(255,255,255,0.74);
+$row-selected: rgb(255, 255, 255);
+$input-unselected: #f0f5fc;
+$input-selected: white;
+$text-selected: rgb(0, 0, 0);
+$text-unselected: rgb(55, 55, 55);
+$past-due: red;
+
+//create/style filter select
+//import Adobe Clean font
+//increase padding for all records and proportionally the
+//   search/filter/new action/and selected contact row
+//indent/adjust first field in each list to start inside pill border
+//adjust col headings to align better with data
+//import/email buttons, create fixed space so hover doesn't move other
+//select-filter: set initial and selected text color
+//hover element tooltips
+
+body {
+  background-color: $secondary;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainHeader{
+  background-color: $primary;
+  color: white;
+
+  .container{
+    display: flex;
+    place-content: space-between;
+    margin: 0 5em;
+    align-items: center;
+  }
+
+  .menu-actions{
+    display: flex;
+    justify-content: flex-end;
+    text-transform: uppercase;
+    gap: 1em;
+    button{
+      color: white;
+      background-color: $primary;
+      border: none;
+      font-size: 1.25em;
+      border-radius: 1em;
+      padding: .1em .75em;
+      &:hover{
+        background-color: $box-highligh;
+        color: $primary;
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+
+.container{
+  display: flex;
+  gap: 2em;
+  margin: 0 2em;
+
+  .left-col{
+    flex: 0 0 1175px;
+  }
+  .right-col{
+    flex: 0 0 600px;
+  }
+}
+
+.icon{
+  display: block;
+  width: .75em;
+}
+.contactFilter{
+  display: flex;
+  justify-content: end;
+  // border: 1px black solid;
+  width: 100%;
+}
+.select {
+  background-color: white;
+  margin: .75em .75em;
+  width: 300px;
+  height: 1.25em;
+  padding: 3px;
+  border-radius: 10px 10px;
+  position: relative;
+
+  select:focus{
+    outline: none;
+  }
+  
+  select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding-left: 2em;
+    width: 90%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    line-height: inherit;
+    position: absolute;
+  }
+}
+
+.input-unselected{
+  background-color: $input-unselected;
+}
+.input-selected{
+  background-color: $input-selected;
+}
+
+tbody tr {
+  background-color: $row-unselected;
+  color: $text-unselected;
+  border-bottom: 2px solid $secondary;
+}
+
+tbody td {
+ padding: 7px;
+}
+
+.row-selected{
+  background-color: $row-selected;
+  color: $text-selected;
+  font-weight: bold;
+  // border: 2px black solid;
+  // border-radius: 12px 12px;
+  //line-height: 24px;
+}
+
+.row-unselected{
+  background-color: $row-unselected;
+}
+
+.bg-box{
+  background-color: $box-highligh;
+  position: sticky;
+  inset-block-start: 0;
+}
+.past-due-service{
+  color: $past-due;
+}
+
+.contacts{
+  height: 575px;
+  overflow-y: auto;
+
+  .tbl-contacts{
+    margin-left: .5em;
+    table-layout: fixed;
+    white-space: nowrap;
+    border-collapse: collapse;
+    width: 98.5%;
+  }
+  .col-name{
+    width: 17%;
+    overflow: hidden;
+    padding-right: 1em;
+  }
+  .col-add{
+    width: 25%;
+    overflow: hidden;
+  }
+  .col-email{
+    width: 19%;
+    overflow: hidden;
+  }
+  .col-id{
+    width: 5%;
+    overflow: hidden;
+  }
+  .col-phone{
+    width: 12%;
+  }
+  .col-stat{
+    width: 4%;
+  }
+  .col-proc{
+    width: 4%;
+  }
+  .col-inc{
+    width: 4%;
+  }
+  td:nth-child(5) {
+    text-align: right;
+  }
+}
+
+.cinc {
+  cursor: pointer;
+}
+
+.patients{
+  height: 575px;
+  overflow-y: auto;
+  .tbl-patients{
+    margin-left: .5em;
+    table-layout: fixed;
+    white-space: nowrap;
+    border-collapse: collapse;
+    width: 97%;
+  }
+  .col-patient{
+    width: 28%;
+    overflow: hidden;
+    padding-right: 1em;
+  }
+  .col-service{
+    width: 49%;
+    overflow: hidden;
+  }
+  .col-duedate{
+    width: 13%;
+    overflow: hidden;
+    text-align: center;
+  }
+  .col-include{
+    width: 10%;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+}
+.pinclude {
+  cursor: pointer;
+}
+
+#actions{
+  margin-top: 2em;
+  height: 280px;
+  overflow-y: auto;
+  .tbl-actions{
+    margin-left: .5em;
+    table-layout: fixed;
+    white-space: nowrap;
+    border-collapse: collapse;
+    width: 98%;
+  }
+  .col-date{
+    width: 12%;
+    overflow: hidden;
+  }
+  .col-action{
+    width: 18%;
+    overflow: hidden;
+  }
+  .col-notes{
+    width: 69%;
+    overflow: hidden;
+  }
+}
+#action-select{
+  border: none;
+  width: 13.5em;
+  background-color: white;
+  color: rgb(40, 69, 217);
+  //Need JS to set color to blk when selected, revert when SAVE'd
+}
+::placeholder{
+  color: rgb(40, 69, 217);
+}
+.action-container{
+  // border: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+.new-action{
+  margin-right: 1em;
+}
+.save-action-ready{ //button settings when action is selected
+  color: black;
+  background-color: rgb(138, 182, 138);
+}  //reset colors if new contact is selected
+#standard-select{
+  color: rgb(40, 69, 217);
+}
+
+.note-box{
+  position: relative;
+  width: 700px;
+  //border: 1px black solid;
+  right: 5px;
+  .new-note{
+    width: 85%;
+    background-color: white;
+    margin: .75em .75em;
+    height: 1.25em;
+    padding: 3px;
+    border-radius: 10px 10px;
+    position: relative;
+    right: 5px;
+    #note-input {
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      padding-left: 2em;
+      width: 75%;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+      line-height: inherit;
+      position: absolute;
+      align-self: flex-start;
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+  .note-save-button{
+    position: absolute;
+    align-self: flex-end;
+    width: 10%;
+    top: 12px;
+    right: 10px;
+  }
+  #save-button{
+    width: 100%;
+    background-color: lightgray;
+    appearance: none;
+    border: none;
+    border-radius: 5px 5px;
+    font-size: inherit;
+    font-family: inherit;
+  }
+}
+
+table{
+  top: 0;
+}
+
+td img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td.cstat,
+td.cproc{
+  text-align: center;
+}
+
+thead{
+  position: sticky;
+  top: 0;
+  background-color: $box-highligh;
+}
+
+.tbl-header{
+  // position: sticky;
+  // inset-block-start: 0;
+  color: rgb(52, 52, 52);
+  th{
+    font-weight: normal;
+    font-size: .85em;
+    text-transform: uppercase;
+    text-align: left;
+    padding-top: .8em;
+    padding-left: .3em;
+    padding-bottom: .4em;
+    background-color: $box-highligh;
+  }
+}
+
+
+.truncate{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
+
