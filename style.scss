@@ -10,6 +10,12 @@ $text-selected: rgb(0, 0, 0);
 $text-unselected: rgb(55, 55, 55);
 $past-due: red;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 //create/style filter select
 //import Adobe Clean font
 //increase padding for all records and proportionally the
@@ -29,46 +35,73 @@ body {
 .mainHeader{
   background-color: $primary;
   color: white;
-
-  .container{
-    display: flex;
-    place-content: space-between;
-    margin: 0 5em;
-    align-items: center;
+}
+.container{
+  display: flex;
+  place-content: space-between;
+  margin: 0 5em;
+  align-items: center;
+}
+.menu-actions{
+display: flex;
+justify-content: flex-end;
+text-transform: uppercase;
+gap: 1em;
+button{
+  color: white;
+  background-color: $primary;
+  border: none;
+  font-size: 1.25em;
+  border-radius: 1em;
+  padding: .1em .75em;
+  &:hover{
+    background-color: $box-highligh;
+    color: $primary;
+    font-size: 1.3em;
   }
-
-  .menu-actions{
-    display: flex;
-    justify-content: flex-end;
-    text-transform: uppercase;
-    gap: 1em;
-    button{
-      color: white;
-      background-color: $primary;
-      border: none;
-      font-size: 1.25em;
-      border-radius: 1em;
-      padding: .1em .75em;
-      &:hover{
-        background-color: $box-highligh;
-        color: $primary;
-        font-size: 1.3em;
-      }
-    }
-  }
+}
 }
 
 .container{
   display: flex;
   gap: 2em;
   margin: 0 2em;
-
-  .left-col{
-    flex: 0 0 1175px;
-  }
-  .right-col{
-    flex: 0 0 600px;
-  }
+}
+// .left-col{
+//   //flex: 0 0 1175px;
+//   width: 1175px;
+// }
+// .right-col{
+//   //flex: 0 0 600px;
+//   width: 600px;
+// }
+// .bg-box{
+//   background-color: $box-highligh;
+// }
+.contacts{
+  width: 1175px;
+  height: 575px;
+  position: relative;
+}
+.contacts-header{
+  height: 3em;
+  width: inherit;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+.tbl-container{
+  height: 525px;
+  overflow-y: scroll; 
+  position: absolute;
+  bottom: 0;
+}
+.tbl-contacts{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 98.5%;
 }
 
 .icon{
@@ -89,7 +122,7 @@ body {
   padding: 3px;
   border-radius: 10px 10px;
   position: relative;
-
+  
   select:focus{
     outline: none;
   }
@@ -138,59 +171,43 @@ tbody td {
   background-color: $row-unselected;
 }
 
-.bg-box{
-  background-color: $box-highligh;
-  position: sticky;
-  inset-block-start: 0;
-}
 .past-due-service{
   color: $past-due;
 }
 
-.contacts{
-  height: 575px;
-  overflow-y: auto;
-
-  .tbl-contacts{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 98.5%;
-  }
-  .col-name{
-    width: 17%;
-    overflow: hidden;
-    padding-right: 1em;
-  }
-  .col-add{
-    width: 25%;
-    overflow: hidden;
-  }
-  .col-email{
-    width: 19%;
-    overflow: hidden;
-  }
-  .col-id{
-    width: 5%;
-    overflow: hidden;
-  }
-  .col-phone{
-    width: 12%;
-  }
-  .col-stat{
-    width: 4%;
-  }
-  .col-proc{
-    width: 4%;
-  }
-  .col-inc{
-    width: 4%;
-  }
-  td:nth-child(5) {
-    text-align: right;
-  }
+.col-name{
+  width: 17%;
+  overflow: hidden;
+  padding-right: 1em;
 }
+.col-add{
+  width: 25%;
+  overflow: hidden;
+}
+.col-email{
+  width: 19%;
+  overflow: hidden;
+}
+.col-id{
+  width: 5%;
+  overflow: hidden;
+}
+.col-phone{
+  width: 12%;
+}
+.col-stat{
+  width: 4%;
+}
+.col-proc{
+  width: 4%;
+}
+.col-inc{
+  width: 4%;
+}
+td:nth-child(5) {
+  text-align: right;
+}
+
 
 .cinc {
   cursor: pointer;
@@ -198,7 +215,7 @@ tbody td {
 
 .patients{
   height: 575px;
-  overflow-y: auto;
+  overflow-y: scroll;
   .tbl-patients{
     margin-left: .5em;
     table-layout: fixed;
@@ -234,7 +251,7 @@ tbody td {
 #actions{
   margin-top: 2em;
   height: 280px;
-  overflow-y: auto;
+  overflow-y: scroll;
   .tbl-actions{
     margin-left: .5em;
     table-layout: fixed;
@@ -347,27 +364,25 @@ td.cproc{
   text-align: center;
 }
 
-thead{
-  position: sticky;
-  top: 0;
-  background-color: $box-highligh;
-}
+// thead{
+//   position: sticky;
+//   top: 0;
+//   background-color: $box-highligh;
+// }
 
-.tbl-header{
-  // position: sticky;
-  // inset-block-start: 0;
-  color: rgb(52, 52, 52);
-  th{
-    font-weight: normal;
-    font-size: .85em;
-    text-transform: uppercase;
-    text-align: left;
-    padding-top: .8em;
-    padding-left: .3em;
-    padding-bottom: .4em;
-    background-color: $box-highligh;
-  }
-}
+// .tbl-header{
+//   color: rgb(52, 52, 52);
+//   th{
+//     font-weight: normal;
+//     font-size: .85em;
+//     text-transform: uppercase;
+//     text-align: left;
+//     padding-top: .8em;
+//     padding-left: .3em;
+//     padding-bottom: .4em;
+//     background-color: $box-highligh;
+//   }
+// }
 
 
 .truncate{

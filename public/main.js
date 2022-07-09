@@ -187,7 +187,7 @@ function toggleSelect(x){
   if(!y){
     const t = document.querySelector('.tbl-contacts');
     //loop all rows to remove class 'row-selected'
-    for (let i = 1; i < t.rows.length; i++) {
+    for (let i = 0; i < t.rows.length; i++) {
       const e = t.rows[i].classList.contains('row-selected');
       if(e){
         t.rows[i].classList.toggle('row-selected');

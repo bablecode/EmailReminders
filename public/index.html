@@ -43,113 +43,133 @@ record count for Records
 display for no records found 
 -->
 
-  <section class="contactPatient">
+  <section>
     <div class="container">
-      <div class="contacts bg-box left-col">
-        <table class="tbl-contacts">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-name">Name</th>
-              <th class="col-add">Address</th>
-              <th class="col-email">Email</th>
-              <th class="col-id">ID</th>
-              <th class="col-phone">Phone</th>
-              <th class="col-stat">Stat</th>
-              <th class="col-proc">Proc</th>
-              <th class="col-inc">Inc</th>
-            </tr>
-          </thead>
-          <tbody class="tbl-body contact-body">
-            <tr class="contact-item" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Westlehoffer, Kenneth Alexander
-                </div>
-                <p hidden class="recordID">222</p>
-              </td>
-              <td class="caddress">
-                <div class="truncate">2893 Thermos Thomas Ln S., Westport CT
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">bassoonist@gmail.com
-                </div>
-              </td>
-              <td class="cid">
-                1489
-              </td>
-              <td class="cphone">
-                901 555-2728
-              </td>
-              <td class="cstat">
-                A
-              </td>
-              <td class="cproc">
-
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="contact-item row-selected" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Penderglass, Albert K.
-                </div>
-              </td>
-              <td class="caddress">
-                <div class="truncate">3738 N. Vincent St., Big Town, NY
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">purplevicar@gmail.com
-                </div>
-              </td>
-              <td class="cid">
-                289
-              </td>
-              <td class="cphone">
-                101 555-8393
-              </td>
-              <td class="cstat">
-                A
-              </td>
-              <td class="cproc">
-
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="contact-item" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Stuberfield, Marcus Bigalow
-                </div>
-              </td>
-              <td class="caddress">
-                <div class="truncate">2843 Ivy Rd, Memphis TN
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">plasticnose@aol.com
-                </div>
-              </td>
-              <td class="cid">
-                388
-              </td>
-              <td class="cphone">
-                901 555-1102
-              </td>
-              <td class="cstat">
-                I
-              </td>
-              <td class="cproc">
-                <img class="icon" src="img/check-mark.png" alt="Check Mark">
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="contacts left-col">
+        <div class="contacts-header">
+          <div class="col-name">Name</div>
+          <div class="col-add">Address</div>
+          <div class="col-email">Email</div>
+          <div class="col-id">ID</div>
+          <div class="col-phone">Phone</div>
+          <div class="col-stat">Stat</div>
+          <div class="col-proc">Proc</div>
+          <div class="col-inc">Inc</div>
+        </div>
+        <div class="tbl-container">
+          <table class="tbl-contacts">
+            <col class="col-name">
+            <col class="col-add">
+            <col class="col-email">
+            <col class="col-id">
+            <col class="col-phone">
+            <col class="col-stat">
+            <col class="col-proc">
+            <col class="col-inc">
+            <!-- <thead class="tbl-header">
+              <tr>
+                <th class="col-name">Name</th>
+                <th class="col-add">Address</th>
+                <th class="col-email">Email</th>
+                <th class="col-id">ID</th>
+                <th class="col-phone">Phone</th>
+                <th class="col-stat">Stat</th>
+                <th class="col-proc">Proc</th>
+                <th class="col-inc">Inc</th>
+              </tr>
+            </thead> -->
+            <tbody class="tbl-body contact-body">
+              <tr class="contact-item" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Westlehoffer, Kenneth Alexander
+                  </div>
+                  <p hidden class="recordID">222</p>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">2893 Thermos Thomas Ln S., Westport CT
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">bassoonist@gmail.com
+                  </div>
+                </td>
+                <td class="cid">
+                  1489
+                </td>
+                <td class="cphone">
+                  901 555-2728
+                </td>
+                <td class="cstat">
+                  A
+                </td>
+                <td class="cproc">
+  
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="contact-item row-selected" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Penderglass, Albert K.
+                  </div>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">3738 N. Vincent St., Big Town, NY
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">purplevicar@gmail.com
+                  </div>
+                </td>
+                <td class="cid">
+                  289
+                </td>
+                <td class="cphone">
+                  101 555-8393
+                </td>
+                <td class="cstat">
+                  A
+                </td>
+                <td class="cproc">
+  
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="contact-item" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Stuberfield, Marcus Bigalow
+                  </div>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">2843 Ivy Rd, Memphis TN
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">plasticnose@aol.com
+                  </div>
+                </td>
+                <td class="cid">
+                  388
+                </td>
+                <td class="cphone">
+                  901 555-1102
+                </td>
+                <td class="cstat">
+                  I
+                </td>
+                <td class="cproc">
+                  <img class="icon" src="img/check-mark.png" alt="Check Mark">
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="patients bg-box right-col">
