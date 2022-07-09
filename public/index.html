@@ -18,9 +18,9 @@
     </div>
   </header>
 
-  <section>
-    <div class="container">
-      <div class="contactFilter left-col">
+  <section> <!--Contact Filter-->
+    <div class="filter-container">
+      <div class="contactFilter ">
         <div class="select">
           <select id="standard-select">
             <option value='ALL'>All Contacts</option>
@@ -38,25 +38,24 @@
 
 <!-- 
   ----------NOTES--------------
-scrollable container for Records
 record count for Records
 display for no records found 
 -->
 
-  <section>
-    <div class="container">
-      <div class="contacts left-col">
+  <section> <!--Contact & Patients Sections-->
+    <div class="upper-container">
+      <div class="contacts bg-box left-col">
         <div class="contacts-header">
-          <div class="col-name">Name</div>
-          <div class="col-add">Address</div>
-          <div class="col-email">Email</div>
-          <div class="col-id">ID</div>
-          <div class="col-phone">Phone</div>
-          <div class="col-stat">Stat</div>
-          <div class="col-proc">Proc</div>
-          <div class="col-inc">Inc</div>
+          <div class="hd-name">Name</div>
+          <div class="hd-add">Address</div>
+          <div class="hd-email">Email</div>
+          <div class="hd-id">ID</div>
+          <div class="hd-phone">Phone</div>
+          <div class="hd-stat">Stat</div>
+          <div class="hd-proc">Proc</div>
+          <div class="hd-inc">Inc</div>
         </div>
-        <div class="tbl-container">
+        <div class="contacts-tbl-container">
           <table class="tbl-contacts">
             <col class="col-name">
             <col class="col-add">
@@ -173,91 +172,95 @@ display for no records found
       </div>
 
       <div class="patients bg-box right-col">
-        <table class="tbl-patients">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-patient">patient</th>
-              <th class="col-service">service</th>
-              <th class="col-duedate">due date</th>
-              <th class="col-include">inc</th>
-            </tr>
-          </thead>
-          <tbody class="tbl-body patient-body">
-            <tr class="patient-item">
-              <td class="ppatient">
-                <div class="truncate">Mr Bunny Shoes</div>
-                <p hidden class="recordID">222</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">Sutre Removal</div>
-              </td>
-              <td class="pduedate"><span>04/20/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="selected-row patient-item">
-              <td class="ppatient">
-                <div class="truncate">Mr Bunny Shoes</div>
-                <p hidden class="recordID">333</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">DHPP, Rabies</div>
-              </td>
-              <td class="pduedate"><span>04/20/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="selected-row patient-item">
-              <td class="ppatient">
-                <div class="truncate">Lester Bighound</div>
-                <p hidden class="recordID">444</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">Rabies Annual</div>
-              </td>
-              <td class="pduedate"><span class="past-due-service">02/24/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="patients-header">
+          <div class="pat-patient">Patient</div>
+          <div class="pat-service">Service</div>
+          <div class="pat-duedate">Due Date</div>
+          <div class="pat-include">Inc</div>
+        </div>
+       <div class="patients-tbl-container">
+          <table class="tbl-patients">
+            <col class="col-patient">
+            <col class="col-service">
+            <col class="col-duedate">
+            <col class="col-include">
+            <tbody class="tbl-body patient-body">
+              <tr class="patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Mr Bunny Shoes</div>
+                  <p hidden class="recordID">222</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">Sutre Removal</div>
+                </td>
+                <td class="pduedate"><span>04/20/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="selected-row patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Mr Bunny Shoes</div>
+                  <p hidden class="recordID">333</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">DHPP, Rabies</div>
+                </td>
+                <td class="pduedate"><span>04/20/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="selected-row patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Lester Bighound</div>
+                  <p hidden class="recordID">444</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">Rabies Annual</div>
+                </td>
+                <td class="pduedate"><span class="past-due-service">02/24/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+       </div>
       </div>
     </div>
   </section>
 
-  <Section>
-    <div class="container">
-      <div id="actions" class=" bg-box left-col">
-        <table class="tbl-actions">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-date">date</th>
-              <th class="col-action">action</th>
-              <th class="col-notes">notes</th>
-            </tr>
-            <tr class="new-action-row">
-              
-            </tr>
-          </thead>
-          <tbody class="tbl-body actions-body">
-            <tr class="selected-row action-item">
-              <td class="adate">04/24/22</td>
-              <td class="aaction">Import</td>
-              <td class="anotes">
-                <div class="truncate">System Import</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <Section> <!-- Action Section-->
+    <div class="bottom-container">
+      <div class="actions-box bg-box">
+        <div class="actions-header">
+          <div class="act-date">Action Date</div>
+          <div class="act-action">Action Type</div>
+          <div class="act-notes">Notes</div>
+        </div>
+        <div class="actions-list">
+          <table class="tbl-actions">
+            <col class="col-date">
+            <col class="col-action">
+            <col class="col-notes">
+            <tbody class="tbl-body actions-body">
+              <tr class="selected-row action-item">
+                <td class="adate">04/24/22</td>
+                <td class="aaction">Import</td>
+                <td class="anotes">
+                  <div class="truncate">System Import</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
+    </div> 
 
     </Section>
-    <div class="container">
-      <div class="action-container  left-col">
+    <div class="bottom-container ">
+      <div class="new-action-container">
         <div class="select new-action">
           <select name="action-select" id="action-select">
             <option value="0" selected disabled hidden>New Action...</option>
@@ -267,18 +270,29 @@ display for no records found
             <option value="12">Reopened</option>
           </select>
         </div>
-        <div class="note-box">
+        <div class="new-note-box">
           <div class="new-note">
-            <input type="text" name="note-input" id="note-input" placeholder="Optional note...">
-          </div>
-          <div class="note-save-button" >
-            <button type="submit" id="save-button">Save</button>
+            <input type="text" name="note-input" class="new-note-input" placeholder="Optional note...">
           </div>
         </div> 
+        <div class="note-save-box" >
+          <button type="submit" id="save-button">Save</button>
+        </div>
       </div>
+      
     </div>
   </div>
-  
+  <!-- <div class="right-col">
+        <ul>
+          <li>New Action:</li>
+          <ul>
+            <li>Def color=grey, change when input is detected</li>
+            <li>Change SAVE button stype when action type selected</li>
+            <li>Save is disabled until action type selected</li>
+          </ul>
+          <li>bg-box - move tables up from 0</li>
+        </ul>
+      -->
 
   <script type="application/javascript" src="main.js"></script>
 </body>

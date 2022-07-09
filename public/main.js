@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function addNote(){
   let vclientID, vactionType, vnote, vcontactID;
   vactionType = document.querySelector('#action-select').value;
-  vnote = document.querySelector("#note-input").value;
+  vnote = document.querySelector(".new-note-input").value;
   //get selected contact recUIDContact & clientID
   
   const t = document.querySelector('.tbl-contacts');

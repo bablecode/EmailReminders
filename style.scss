@@ -41,6 +41,7 @@ body {
   place-content: space-between;
   margin: 0 5em;
   align-items: center;
+  //border: 1px black solid;
 }
 .menu-actions{
 display: flex;
@@ -61,40 +62,47 @@ button{
   }
 }
 }
-
-.container{
+.contactFilter{
+  display: flex;
+  justify-content: end;
+  width: 1175px;
+  //width: 100%;
+}
+.upper-container{
   display: flex;
   gap: 2em;
-  margin: 0 2em;
+  margin: 0 2em 2em 2em;
 }
-// .left-col{
-//   //flex: 0 0 1175px;
-//   width: 1175px;
-// }
-// .right-col{
-//   //flex: 0 0 600px;
-//   width: 600px;
-// }
-// .bg-box{
-//   background-color: $box-highligh;
-// }
+.left-col{
+  flex: 0 0 1175px;
+}
+.right-col{
+  flex: 0 0 600px;
+  //width: 600px;
+}
+.bg-box{
+  background-color: $box-highligh;
+  border-radius: 5px 5px;
+}
 .contacts{
   width: 1175px;
-  height: 575px;
+  height: 583px;
   position: relative;
 }
 .contacts-header{
-  height: 3em;
-  width: inherit;
+  height: 2em;
+  padding-top: .5em;
+  width: 103%;
   display: flex;
-  position: sticky;
   top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
 }
-.tbl-container{
-  height: 525px;
+.contacts-tbl-container{
+  height: 545px;
   overflow-y: scroll; 
   position: absolute;
-  bottom: 0;
+  bottom: 8px;
 }
 .tbl-contacts{
   margin-left: .5em;
@@ -108,20 +116,17 @@ button{
   display: block;
   width: .75em;
 }
-.contactFilter{
-  display: flex;
-  justify-content: end;
-  // border: 1px black solid;
-  width: 100%;
-}
+
 .select {
   background-color: white;
   margin: .75em .75em;
   width: 300px;
-  height: 1.25em;
+  height: 1.5em;
   padding: 3px;
   border-radius: 10px 10px;
   position: relative;
+  display: flex;
+  align-items: center;
   
   select:focus{
     outline: none;
@@ -174,104 +179,159 @@ tbody td {
 .past-due-service{
   color: $past-due;
 }
-
 .col-name{
-  width: 17%;
-  overflow: hidden;
   padding-right: 1em;
 }
-.col-add{
-  width: 25%;
+.col-name,.col-add,.col-email,.col-id{
   overflow: hidden;
 }
-.col-email{
+.col-name, .hd-name{
   width: 19%;
-  overflow: hidden;
 }
-.col-id{
+.col-add, .hd-add{
+  width: 26%;
+}
+.col-email, .hd-email{
+  width: 20%;
+}
+.col-id, .hd-id{
   width: 5%;
-  overflow: hidden;
 }
-.col-phone{
-  width: 12%;
+.col-phone, .hd-phone{
+  width: 13%;
 }
-.col-stat{
+.col-stat, .hd-stat{
   width: 4%;
 }
-.col-proc{
+.col-proc, .hd-proc{
   width: 4%;
 }
-.col-inc{
+.col-inc, .hd-inc{
   width: 4%;
+}
+.contacts-header > div{
+  padding-left: 7px;
+  padding-right: 7px;
 }
 td:nth-child(5) {
   text-align: right;
 }
-
+.contacts-header > div:nth-child(5){
+  padding-left: 35px;
+}
 
 .cinc {
   cursor: pointer;
 }
 
-.patients{
-  height: 575px;
+.patients-header{
+  height: 2em;
+  padding-top: .5em;
+  width: 100%;
+  display: flex;
+  top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
+}
+.patients-tbl-container{
+  height: 545px;
   overflow-y: scroll;
-  .tbl-patients{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 97%;
-  }
-  .col-patient{
-    width: 28%;
-    overflow: hidden;
-    padding-right: 1em;
-  }
-  .col-service{
-    width: 49%;
-    overflow: hidden;
-  }
-  .col-duedate{
-    width: 13%;
-    overflow: hidden;
-    text-align: center;
-  }
-  .col-include{
-    width: 10%;
-    overflow: hidden;
-    text-align: center;
-  }
-  
+
+}
+.tbl-patients{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 97%;
+  bottom: 0;
+}
+.col-patient, .pat-patient{
+  width: 25%;
+}
+.col-service, .pat-service{
+  width: 47%;
+}
+.col-duedate, .pat-duedate{
+  width: 16%;
+}
+.col-include, .pat-include{
+  width: 11%;
+}
+.col-patient, .col-service, .col-duedate, .col-include{
+  overflow: hidden;
+}
+.col-duedate, .col-include{
+  text-align: center;
+}
+.col-patient{
+  padding-right: 1em;
+}
+.pat-patient{
+  padding-left: 7px;
+}
+.pat-service{
+  width: 45%;
+}
+.pat-include{
+  padding-left: 5px;
 }
 .pinclude {
   cursor: pointer;
 }
 
-#actions{
-  margin-top: 2em;
-  height: 280px;
-  overflow-y: scroll;
-  .tbl-actions{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 98%;
-  }
-  .col-date{
-    width: 12%;
-    overflow: hidden;
-  }
-  .col-action{
-    width: 18%;
-    overflow: hidden;
-  }
-  .col-notes{
-    width: 69%;
-    overflow: hidden;
-  }
+.bottom-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0 2em;
 }
+.actions-box{
+  width: 1175px;
+  height: 323px;
+  position: relative;
+}
+.actions-header{
+  height: 2em;
+  padding-top: .5em;
+  width: 103%;
+  display: flex;
+  top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
+}
+
+.actions-list{
+  //margin-top: 2em;
+  height: 284px;
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 8px;
+}
+.tbl-actions{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 98%;
+}
+
+.col-date, .col-action, .col-notes{
+  overflow: hidden;
+}
+.col-date, .act-date{
+  width: 12%;
+}
+.col-action, .act-action{
+  width: 18%;
+}
+.col-notes, .act-notes{
+  width: 65%;
+}
+.act-date, .act-action, .act-notes{
+  padding: 0 7px;
+}
+
 #action-select{
   border: none;
   width: 13.5em;
@@ -282,13 +342,14 @@ td:nth-child(5) {
 ::placeholder{
   color: rgb(40, 69, 217);
 }
-.action-container{
-  // border: 1px black solid;
+.new-action-container{
+  //border: 1px black solid;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 100%;
-}
+  align-items: center;
+  width: 1175px
+} 
 .new-action{
   margin-right: 1em;
 }
@@ -300,57 +361,59 @@ td:nth-child(5) {
   color: rgb(40, 69, 217);
 }
 
-.note-box{
+.new-note-box{
   position: relative;
-  width: 700px;
+  width: 575px;
   //border: 1px black solid;
+  margin-right: 1em;
+}
+//right: 5px;
+.new-note{
+  width: 100%;
+  background-color: white;
+  margin: .75em .75em;
+  height: 1.5em;
+  padding: 3px;
+  border-radius: 10px 10px;
+  position: relative;
   right: 5px;
-  .new-note{
-    width: 85%;
-    background-color: white;
-    margin: .75em .75em;
-    height: 1.25em;
-    padding: 3px;
-    border-radius: 10px 10px;
-    position: relative;
-    right: 5px;
-    #note-input {
-      appearance: none;
-      background-color: transparent;
-      border: none;
-      padding-left: 2em;
-      width: 75%;
-      font-family: inherit;
-      font-size: inherit;
-      cursor: pointer;
-      line-height: inherit;
-      position: absolute;
-      align-self: flex-start;
-      &:focus{
-        outline: none;
-      }
-    }
+  display: flex;
+  align-items: center;
+}
+.new-note-input {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding-left: 2em;
+  width: 90%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  position: absolute;
+  &:focus{
+    outline: none;
   }
-  .note-save-button{
-    position: absolute;
-    align-self: flex-end;
-    width: 10%;
-    top: 12px;
-    right: 10px;
-  }
-  #save-button{
-    width: 100%;
-    background-color: lightgray;
-    appearance: none;
-    border: none;
-    border-radius: 5px 5px;
-    font-size: inherit;
-    font-family: inherit;
-  }
+}
+.note-save-box{
+  position: relative;
+  margin-right: 1.5em;
+}
+#save-button{
+  //width: 100%;
+  background-color: rgb(224, 226, 238);
+  appearance: none;
+  border: none;
+  border-radius: 5px 5px;
+  font-size: inherit;
+  font-family: inherit;
+  height: 1.5em;
+  color: darkgray;
 }
 
 table{
   top: 0;
+  table-layout: fixed;
 }
 
 td img{
@@ -363,27 +426,6 @@ td.cstat,
 td.cproc{
   text-align: center;
 }
-
-// thead{
-//   position: sticky;
-//   top: 0;
-//   background-color: $box-highligh;
-// }
-
-// .tbl-header{
-//   color: rgb(52, 52, 52);
-//   th{
-//     font-weight: normal;
-//     font-size: .85em;
-//     text-transform: uppercase;
-//     text-align: left;
-//     padding-top: .8em;
-//     padding-left: .3em;
-//     padding-bottom: .4em;
-//     background-color: $box-highligh;
-//   }
-// }
-
 
 .truncate{
   overflow: hidden;
