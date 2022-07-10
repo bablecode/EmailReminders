@@ -48,7 +48,6 @@ async function addNote(){
 };
 
 
-
 async function getContacts(filter){
   let link = 'http://localhost:3000/contacts/'+filter;
   await fetch(link)
@@ -178,7 +177,6 @@ function loadActions(data){
 
 
 
-
 function toggleSelect(x){
   const y = x.classList.contains('row-selected');
   const recordID = x.cells[0].lastElementChild.textContent;
@@ -203,26 +201,29 @@ function toggleSelect(x){
 }
 
 function contactToggleINC(x, caller) {
-  const recUID = x.parentNode.parentNode.cells[0].lastElementChild.textContent;
-  const cell = x.parentNode.parentNode.cells[7];
-  let link = 'http://localhost:3000/contacts/'+recUID;
-  let headersList = {
-    "Content-Type": "application/x-www-form-urlencoded"
-   }
-  let bodyContent = ``;
-  const options = {
-    method: 'PUT',
-    body: JSON.stringify({recID:recUID})
-    };
-  fetch(link, {
-    method: "PUT",
-    body: bodyContent,
-    headers: headersList
-  })
-    .then( response => response.json() )
-    .then( response => {
-      toggleIncDisplay(cell, caller);
-    });
+  const email = x.parentNode.parentNode.cells[2].innerText;
+  if(email>''){
+    const recUID = x.parentNode.parentNode.cells[0].lastElementChild.textContent;
+    const cell = x.parentNode.parentNode.cells[7];
+    let link = 'http://localhost:3000/contacts/'+recUID;
+    let headersList = {
+      "Content-Type": "application/x-www-form-urlencoded"
+     }
+    let bodyContent = ``;
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify({recID:recUID})
+      };
+    fetch(link, {
+      method: "PUT",
+      body: bodyContent,
+      headers: headersList
+    })
+      .then( response => response.json() )
+      .then( response => {
+        toggleIncDisplay(cell, caller);
+      });
+  }
 };
 
 function patientToggleINC(x, caller) {
