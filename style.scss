@@ -432,7 +432,20 @@ td.cproc{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+/* ----------Cell Fade in/out on click test */
+#msgWarning {
+  opacity: 0;
+  transition: 1s;
+  color: red;
+}
+#msgWarning.msgfade-in {
+  opacity: 1;
+  transition: 1s;
+}
+#msgWarning.msghide {
+  display: none;
+}
+ /* ----------Cell Fade END------- */
 
 
 

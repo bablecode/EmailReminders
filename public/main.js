@@ -41,11 +41,14 @@ async function addNote(){
      //refresh action list
      getActions(vclientID)
      //clear input flds
-     document.querySelector('#action-select').value = 0;
-     document.querySelector("#note-input").value = '';
+     clrActionInputs()
    })
 
 };
+function clrActionInputs(){
+  document.querySelector('#action-select').value = 0;
+  document.querySelector(".new-note-input").value = '';
+}
 
 
 async function getContacts(filter){
@@ -93,12 +96,20 @@ function loadContacts(data){
     INC = (record.include === 1) ? incCHK : RED_X;
     PROC = (record.processed === 1) ? procCHK : '';
     STAT = (record.clientStatusID === 19) ? `A` : 'I';
+    emailDiv = '';
+    //set up first record for selection
     if(i === 0){
       recID = record.recUID;
       clientID = record.clientID;
       sel = 'row-selected';
     } else {
       sel = '';
+    }
+    //setup INC toggle warning msg
+    if(record.email==''){
+      emailDiv = `<div id="msgWarning" class="truncate">No Email Address</div>`
+    } else {
+      emailDiv = `<div class="truncate">${record.email}</div>`
     }
     s +=`  <tr class="contact-item ${sel}" onclick="toggleSelect(this)">
         <td class="cname">
@@ -109,7 +120,7 @@ function loadContacts(data){
           <div class="truncate">${record.address}</div>
         </td>
         <td class="cemail">
-          <div class="truncate">${record.email}</div>
+          ${emailDiv}
         </td>
         <td class="cid">${record.clientID}
         </td>
@@ -198,11 +209,18 @@ function toggleSelect(x){
   getPatients(recordID);
   //load actions
   getActions(contactID);
+  clrActionInputs();
 }
 
 function contactToggleINC(x, caller) {
-  const email = x.parentNode.parentNode.cells[2].innerText;
-  if(email>''){
+  //const email = x.parentNode.parentNode.cells[2].innerText;
+  //console.log(x.parentNode.parentNode.cells[2]);
+  const email = x.parentNode.parentNode.cells[2];
+  if(email.firstElementChild.id === 'msgWarning'){
+    //display no email warning in email cell
+    showMsgWarning(email.firstElementChild);
+  }else{
+    //toggle INC value
     const recUID = x.parentNode.parentNode.cells[0].lastElementChild.textContent;
     const cell = x.parentNode.parentNode.cells[7];
     let link = 'http://localhost:3000/contacts/'+recUID;
@@ -277,4 +295,19 @@ function formatDate(date) {
       day = '0' + day;
 
   return [year, month, day].join('-');
+}
+
+function showMsgWarning(elementWithMsg){
+  //pass in element with hidden text
+  //const text = x.parentElement.cells[1].firstChild;
+  elementWithMsg.classList.remove("msghide");
+  setTimeout(function () {
+    elementWithMsg.classList.add("msgfade-in");
+    setTimeout(function () {
+      elementWithMsg.classList.remove("msgfade-in");
+      setTimeout(function () {
+        elementWithMsg.classList.add("msghide");
+      }, 1000);
+    }, 2000);
+  });
 }
