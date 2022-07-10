@@ -2,3 +2,5 @@ node_modules
 style copy.scss
 package-lock.json
 .DS_Store
+.DS_Store
+public/.DS_Store

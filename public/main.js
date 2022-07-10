@@ -12,12 +12,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function addNote(){
   let vclientID, vactionType, vnote, vcontactID;
   vactionType = document.querySelector('#action-select').value;
-  vnote = document.querySelector("#note-input").value;
+  vnote = document.querySelector(".new-note-input").value;
   //get selected contact recUIDContact & clientID
   
   const t = document.querySelector('.tbl-contacts');
   //loop all rows to remove class 'row-selected'
-  for (let i = 1; i < t.rows.length; i++) {
+  for (let i = 0; i < t.rows.length; i++) {
     const e = t.rows[i].classList.contains('row-selected');
     if(e){
       vcontactID = t.rows[i].cells[0].lastElementChild.textContent;
@@ -41,12 +41,22 @@ async function addNote(){
      //refresh action list
      getActions(vclientID)
      //clear input flds
-     document.querySelector('#action-select').value = 0;
-     document.querySelector("#note-input").value = '';
+     clrActionInputs()
    })
 
 };
 
+function clrActionInputs(){
+  const sel = document.querySelector('#action-select');
+  const inp = document.querySelector(".new-note-input");
+  if(sel.value != 0){
+    sel.value = 0;
+    toggleActionDisplay(sel);
+  }
+  inp.value = '';
+  actionInputOUT(inp);
+
+}
 
 
 async function getContacts(filter){
@@ -94,12 +104,20 @@ function loadContacts(data){
     INC = (record.include === 1) ? incCHK : RED_X;
     PROC = (record.processed === 1) ? procCHK : '';
     STAT = (record.clientStatusID === 19) ? `A` : 'I';
+    emailDiv = '';
+    //set up first record for selection
     if(i === 0){
       recID = record.recUID;
       clientID = record.clientID;
       sel = 'row-selected';
     } else {
       sel = '';
+    }
+    //setup INC toggle warning msg
+    if(record.email==''){
+      emailDiv = `<div id="msgWarning" class="truncate">No Email Address</div>`
+    } else {
+      emailDiv = `<div class="truncate">${record.email}</div>`
     }
     s +=`  <tr class="contact-item ${sel}" onclick="toggleSelect(this)">
         <td class="cname">
@@ -110,7 +128,7 @@ function loadContacts(data){
           <div class="truncate">${record.address}</div>
         </td>
         <td class="cemail">
-          <div class="truncate">${record.email}</div>
+          ${emailDiv}
         </td>
         <td class="cid">${record.clientID}
         </td>
@@ -178,16 +196,16 @@ function loadActions(data){
 
 
 
-
 function toggleSelect(x){
   const y = x.classList.contains('row-selected');
   const recordID = x.cells[0].lastElementChild.textContent;
   const contactID = x.cells[3].innerText;
+  clrActionInputs();
   //if not currently selected:
   if(!y){
     const t = document.querySelector('.tbl-contacts');
     //loop all rows to remove class 'row-selected'
-    for (let i = 1; i < t.rows.length; i++) {
+    for (let i = 0; i < t.rows.length; i++) {
       const e = t.rows[i].classList.contains('row-selected');
       if(e){
         t.rows[i].classList.toggle('row-selected');
@@ -203,26 +221,35 @@ function toggleSelect(x){
 }
 
 function contactToggleINC(x, caller) {
-  const recUID = x.parentNode.parentNode.cells[0].lastElementChild.textContent;
-  const cell = x.parentNode.parentNode.cells[7];
-  let link = 'http://localhost:3000/contacts/'+recUID;
-  let headersList = {
-    "Content-Type": "application/x-www-form-urlencoded"
-   }
-  let bodyContent = ``;
-  const options = {
-    method: 'PUT',
-    body: JSON.stringify({recID:recUID})
-    };
-  fetch(link, {
-    method: "PUT",
-    body: bodyContent,
-    headers: headersList
-  })
-    .then( response => response.json() )
-    .then( response => {
-      toggleIncDisplay(cell, caller);
-    });
+  //const email = x.parentNode.parentNode.cells[2].innerText;
+  //console.log(x.parentNode.parentNode.cells[2]);
+  const email = x.parentNode.parentNode.cells[2];
+  if(email.firstElementChild.id === 'msgWarning'){
+    //display no email warning in email cell
+    showMsgWarning(email.firstElementChild);
+  }else{
+    //toggle INC value
+    const recUID = x.parentNode.parentNode.cells[0].lastElementChild.textContent;
+    const cell = x.parentNode.parentNode.cells[7];
+    let link = 'http://localhost:3000/contacts/'+recUID;
+    let headersList = {
+      "Content-Type": "application/x-www-form-urlencoded"
+     }
+    let bodyContent = ``;
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify({recID:recUID})
+      };
+    fetch(link, {
+      method: "PUT",
+      body: bodyContent,
+      headers: headersList
+    })
+      .then( response => response.json() )
+      .then( response => {
+        toggleIncDisplay(cell, caller);
+      });
+  }
 };
 
 function patientToggleINC(x, caller) {
@@ -260,9 +287,32 @@ function toggleIncDisplay(cell, caller){
   }
 };
 
-function getSelectContactInfo(recUID, clientID){
-
+function toggleActionDisplay(x){
+  //change input colors
+  if(x.value != 0){
+    x.classList.remove('select-def');
+    x.classList.add('select-change');
+    document.querySelector('#save-button').disabled = false;
+    document.querySelector('#save-button').title = '';
+  }else{
+    x.classList.remove('select-change');
+    x.classList.add('select-def');
+    document.querySelector('#save-button').disabled = true;
+    document.querySelector('#save-button').title = 'New Action is required';
+  }
 }
+function actionInputIN(x){
+  //clr placeholder while typing, change color select-change
+  x.placeholder='';
+  x.classList.add('select-change');
+};
+function actionInputOUT(x){
+  //if empty: add placeholder, reset color select-def
+  if(x.value==''){
+    x.placeholder='Optional note...'
+    x.classList.add('select-def');
+  }
+};
 
 function formatDate(date) {
   var d = new Date(date),
@@ -276,4 +326,19 @@ function formatDate(date) {
       day = '0' + day;
 
   return [year, month, day].join('-');
-}
+};
+
+function showMsgWarning(elementWithMsg){
+  //pass in element with hidden text
+  //const text = x.parentElement.cells[1].firstChild;
+  elementWithMsg.classList.remove("msghide");
+  setTimeout(function () {
+    elementWithMsg.classList.add("msgfade-in");
+    setTimeout(function () {
+      elementWithMsg.classList.remove("msgfade-in");
+      setTimeout(function () {
+        elementWithMsg.classList.add("msghide");
+      }, 1000);
+    }, 2000);
+  });
+};

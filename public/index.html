@@ -18,9 +18,9 @@
     </div>
   </header>
 
-  <section>
-    <div class="container">
-      <div class="contactFilter left-col">
+  <section> <!--Contact Filter-->
+    <div class="filter-container">
+      <div class="contactFilter ">
         <div class="select">
           <select id="standard-select">
             <option value='ALL'>All Contacts</option>
@@ -38,227 +38,250 @@
 
 <!-- 
   ----------NOTES--------------
-scrollable container for Records
 record count for Records
 display for no records found 
 -->
 
-  <section class="contactPatient">
-    <div class="container">
+  <section> <!--Contact & Patients Sections-->
+    <div class="upper-container">
       <div class="contacts bg-box left-col">
-        <table class="tbl-contacts">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-name">Name</th>
-              <th class="col-add">Address</th>
-              <th class="col-email">Email</th>
-              <th class="col-id">ID</th>
-              <th class="col-phone">Phone</th>
-              <th class="col-stat">Stat</th>
-              <th class="col-proc">Proc</th>
-              <th class="col-inc">Inc</th>
-            </tr>
-          </thead>
-          <tbody class="tbl-body contact-body">
-            <tr class="contact-item" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Westlehoffer, Kenneth Alexander
-                </div>
-                <p hidden class="recordID">222</p>
-              </td>
-              <td class="caddress">
-                <div class="truncate">2893 Thermos Thomas Ln S., Westport CT
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">bassoonist@gmail.com
-                </div>
-              </td>
-              <td class="cid">
-                1489
-              </td>
-              <td class="cphone">
-                901 555-2728
-              </td>
-              <td class="cstat">
-                A
-              </td>
-              <td class="cproc">
-
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="contact-item row-selected" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Penderglass, Albert K.
-                </div>
-              </td>
-              <td class="caddress">
-                <div class="truncate">3738 N. Vincent St., Big Town, NY
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">purplevicar@gmail.com
-                </div>
-              </td>
-              <td class="cid">
-                289
-              </td>
-              <td class="cphone">
-                101 555-8393
-              </td>
-              <td class="cstat">
-                A
-              </td>
-              <td class="cproc">
-
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="contact-item" onclick="toggleSelect(this)">
-              <td class="cname">
-                <div class="truncate">Stuberfield, Marcus Bigalow
-                </div>
-              </td>
-              <td class="caddress">
-                <div class="truncate">2843 Ivy Rd, Memphis TN
-                </div>
-              </td>
-              <td class="cemail">
-                <div class="truncate">plasticnose@aol.com
-                </div>
-              </td>
-              <td class="cid">
-                388
-              </td>
-              <td class="cphone">
-                901 555-1102
-              </td>
-              <td class="cstat">
-                I
-              </td>
-              <td class="cproc">
-                <img class="icon" src="img/check-mark.png" alt="Check Mark">
-              </td>
-              <td class="cinc">
-                <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="contacts-header">
+          <div class="hd-name">Name</div>
+          <div class="hd-add">Address</div>
+          <div class="hd-email">Email</div>
+          <div class="hd-id" title="Cornerstone Client ID">ID</div>
+          <div class="hd-phone">Phone</div>
+          <div class="hd-stat" title="Cornerstone Client Status">Stat</div>
+          <div class="hd-proc" title="Processed or Unprocessed">Proc</div>
+          <div class="hd-inc" title="Include when generating email">Inc</div>
+        </div>
+        <div class="contacts-tbl-container">
+          <table class="tbl-contacts">
+            <col class="col-name">
+            <col class="col-add">
+            <col class="col-email">
+            <col class="col-id">
+            <col class="col-phone">
+            <col class="col-stat">
+            <col class="col-proc">
+            <col class="col-inc">
+            <!-- <thead class="tbl-header">
+              <tr>
+                <th class="col-name">Name</th>
+                <th class="col-add">Address</th>
+                <th class="col-email">Email</th>
+                <th class="col-id">ID</th>
+                <th class="col-phone">Phone</th>
+                <th class="col-stat">Stat</th>
+                <th class="col-proc">Proc</th>
+                <th class="col-inc">Inc</th>
+              </tr>
+            </thead> -->
+            <tbody class="tbl-body contact-body">
+              <tr class="contact-item" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Westlehoffer, Kenneth Alexander
+                  </div>
+                  <p hidden class="recordID">222</p>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">2893 Thermos Thomas Ln S., Westport CT
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">bassoonist@gmail.com
+                  </div>
+                </td>
+                <td class="cid">
+                  1489
+                </td>
+                <td class="cphone">
+                  901 555-2728
+                </td>
+                <td class="cstat">
+                  A
+                </td>
+                <td class="cproc">
+  
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="contact-item row-selected" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Penderglass, Albert K.
+                  </div>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">3738 N. Vincent St., Big Town, NY
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">purplevicar@gmail.com
+                  </div>
+                </td>
+                <td class="cid">
+                  289
+                </td>
+                <td class="cphone">
+                  101 555-8393
+                </td>
+                <td class="cstat">
+                  A
+                </td>
+                <td class="cproc">
+  
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="contact-item" onclick="toggleSelect(this)">
+                <td class="cname">
+                  <div class="truncate">Stuberfield, Marcus Bigalow
+                  </div>
+                </td>
+                <td class="caddress">
+                  <div class="truncate">2843 Ivy Rd, Memphis TN
+                  </div>
+                </td>
+                <td class="cemail">
+                  <div class="truncate">plasticnose@aol.com
+                  </div>
+                </td>
+                <td class="cid">
+                  388
+                </td>
+                <td class="cphone">
+                  901 555-1102
+                </td>
+                <td class="cstat">
+                  I
+                </td>
+                <td class="cproc">
+                  <img class="icon" src="img/check-mark.png" alt="Check Mark">
+                </td>
+                <td class="cinc">
+                  <img class="icon" onclick="contactToggleINC(this,'contact')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="patients bg-box right-col">
-        <table class="tbl-patients">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-patient">patient</th>
-              <th class="col-service">service</th>
-              <th class="col-duedate">due date</th>
-              <th class="col-include">inc</th>
-            </tr>
-          </thead>
-          <tbody class="tbl-body patient-body">
-            <tr class="patient-item">
-              <td class="ppatient">
-                <div class="truncate">Mr Bunny Shoes</div>
-                <p hidden class="recordID">222</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">Sutre Removal</div>
-              </td>
-              <td class="pduedate"><span>04/20/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="selected-row patient-item">
-              <td class="ppatient">
-                <div class="truncate">Mr Bunny Shoes</div>
-                <p hidden class="recordID">333</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">DHPP, Rabies</div>
-              </td>
-              <td class="pduedate"><span>04/20/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-            <tr class="selected-row patient-item">
-              <td class="ppatient">
-                <div class="truncate">Lester Bighound</div>
-                <p hidden class="recordID">444</p>
-              </td>
-              <td class="pservice">
-                <div class="truncate">Rabies Annual</div>
-              </td>
-              <td class="pduedate"><span class="past-due-service">02/24/22</span></td>
-              <td class="pinclude">
-                <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="patients-header">
+          <div class="pat-patient">Patient</div>
+          <div class="pat-service">Service</div>
+          <div class="pat-duedate">Due Date</div>
+          <div class="pat-include">Inc</div>
+        </div>
+       <div class="patients-tbl-container">
+          <table class="tbl-patients">
+            <col class="col-patient">
+            <col class="col-service">
+            <col class="col-duedate">
+            <col class="col-include">
+            <tbody class="tbl-body patient-body">
+              <tr class="patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Mr Bunny Shoes</div>
+                  <p hidden class="recordID">222</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">Sutre Removal</div>
+                </td>
+                <td class="pduedate"><span>04/20/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="selected-row patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Mr Bunny Shoes</div>
+                  <p hidden class="recordID">333</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">DHPP, Rabies</div>
+                </td>
+                <td class="pduedate"><span>04/20/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+              <tr class="selected-row patient-item">
+                <td class="ppatient">
+                  <div class="truncate">Lester Bighound</div>
+                  <p hidden class="recordID">444</p>
+                </td>
+                <td class="pservice">
+                  <div class="truncate">Rabies Annual</div>
+                </td>
+                <td class="pduedate"><span class="past-due-service">02/24/22</span></td>
+                <td class="pinclude">
+                  <img class="icon" onclick="patientToggleINC(this, 'patient')" src="img/check-mark.png" alt="Check Mark">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+       </div>
       </div>
     </div>
   </section>
 
-  <Section>
-    <div class="container">
-      <div id="actions" class=" bg-box left-col">
-        <table class="tbl-actions">
-          <thead class="tbl-header">
-            <tr>
-              <th class="col-date">date</th>
-              <th class="col-action">action</th>
-              <th class="col-notes">notes</th>
-            </tr>
-            <tr class="new-action-row">
-              
-            </tr>
-          </thead>
-          <tbody class="tbl-body actions-body">
-            <tr class="selected-row action-item">
-              <td class="adate">04/24/22</td>
-              <td class="aaction">Import</td>
-              <td class="anotes">
-                <div class="truncate">System Import</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <Section> <!-- Action Section-->
+    <div class="bottom-container">
+      <div class="actions-box bg-box">
+        <div class="actions-header">
+          <div class="act-date">Action Date</div>
+          <div class="act-action">Action Type</div>
+          <div class="act-notes">Notes</div>
+        </div>
+        <div class="actions-list">
+          <table class="tbl-actions">
+            <col class="col-date">
+            <col class="col-action">
+            <col class="col-notes">
+            <tbody class="tbl-body actions-body">
+              <tr class="selected-row action-item">
+                <td class="adate">04/24/22</td>
+                <td class="aaction">Import</td>
+                <td class="anotes">
+                  <div class="truncate">System Import</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
+    </div> 
 
     </Section>
-    <div class="container">
-      <div class="action-container  left-col">
+    <div class="bottom-container ">
+      <div class="new-action-container">
         <div class="select new-action">
-          <select name="action-select" id="action-select">
-            <option value="0" selected disabled hidden>New Action...</option>
+          <select name="action-select" id="action-select" class="select-def" onchange="toggleActionDisplay(this)">
+            <option value="0" selected disabled hidden>New action...</option>
             <option value="10">Emailed</option>
             <option value="11">Processed</option>
             <option value="13">Left Message</option>
             <option value="12">Reopened</option>
           </select>
         </div>
-        <div class="note-box">
+        <div class="new-note-box">
           <div class="new-note">
-            <input type="text" name="note-input" id="note-input" placeholder="Optional note...">
-          </div>
-          <div class="note-save-button" >
-            <button type="submit" id="save-button">Save</button>
+            <input type="text" name="note-input" class="new-note-input select-def" onfocusin="actionInputIN(this)" onfocusout="actionInputOUT(this)" placeholder="Optional note...">
           </div>
         </div> 
+        <div class="note-save-box" >
+          <button type="submit" id="save-button" class="btnDisabled" disabled title="New Action is required">Save</button>
+        </div>
       </div>
+      
     </div>
   </div>
-  
 
   <script type="application/javascript" src="main.js"></script>
 </body>

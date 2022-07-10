@@ -10,6 +10,12 @@ $text-selected: rgb(0, 0, 0);
 $text-unselected: rgb(55, 55, 55);
 $past-due: red;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 //create/style filter select
 //import Adobe Clean font
 //increase padding for all records and proportionally the
@@ -29,67 +35,99 @@ body {
 .mainHeader{
   background-color: $primary;
   color: white;
-
-  .container{
-    display: flex;
-    place-content: space-between;
-    margin: 0 5em;
-    align-items: center;
-  }
-
-  .menu-actions{
-    display: flex;
-    justify-content: flex-end;
-    text-transform: uppercase;
-    gap: 1em;
-    button{
-      color: white;
-      background-color: $primary;
-      border: none;
-      font-size: 1.25em;
-      border-radius: 1em;
-      padding: .1em .75em;
-      &:hover{
-        background-color: $box-highligh;
-        color: $primary;
-        font-size: 1.3em;
-      }
-    }
-  }
 }
-
 .container{
   display: flex;
+  place-content: space-between;
+  margin: 0 5em;
+  align-items: center;
+  //border: 1px black solid;
+}
+.menu-actions{
+display: flex;
+justify-content: flex-end;
+text-transform: uppercase;
+gap: 1em;
+button{
+  color: white;
+  background-color: $primary;
+  border: none;
+  font-size: 1.25em;
+  border-radius: 1em;
+  padding: .1em .75em;
+  &:hover{
+    background-color: $box-highligh;
+    color: $primary;
+    font-size: 1.3em;
+  }
+}
+}
+.contactFilter{
+  display: flex;
+  justify-content: end;
+  width: 1175px;
+  //width: 100%;
+}
+.upper-container{
+  display: flex;
   gap: 2em;
-  margin: 0 2em;
-
-  .left-col{
-    flex: 0 0 1175px;
-  }
-  .right-col{
-    flex: 0 0 600px;
-  }
+  margin: 0 2em 2em 2em;
+}
+.left-col{
+  flex: 0 0 1175px;
+}
+.right-col{
+  flex: 0 0 600px;
+  //width: 600px;
+}
+.bg-box{
+  background-color: $box-highligh;
+  border-radius: 5px 5px;
+}
+.contacts{
+  width: 1175px;
+  height: 583px;
+  position: relative;
+}
+.contacts-header{
+  height: 2em;
+  padding-top: .5em;
+  width: 103%;
+  display: flex;
+  top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
+}
+.contacts-tbl-container{
+  height: 545px;
+  overflow-y: scroll; 
+  position: absolute;
+  bottom: 8px;
+}
+.tbl-contacts{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 98.5%;
 }
 
 .icon{
   display: block;
   width: .75em;
 }
-.contactFilter{
-  display: flex;
-  justify-content: end;
-  // border: 1px black solid;
-  width: 100%;
-}
+
 .select {
   background-color: white;
   margin: .75em .75em;
   width: 300px;
-  height: 1.25em;
+  height: 1.5em;
   padding: 3px;
   border-radius: 10px 10px;
   position: relative;
-
+  display: flex;
+  align-items: center;
+  
   select:focus{
     outline: none;
   }
@@ -138,202 +176,257 @@ tbody td {
   background-color: $row-unselected;
 }
 
-.bg-box{
-  background-color: $box-highligh;
-  position: sticky;
-  inset-block-start: 0;
-}
 .past-due-service{
   color: $past-due;
 }
-
-.contacts{
-  height: 575px;
-  overflow-y: auto;
-
-  .tbl-contacts{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 98.5%;
-  }
-  .col-name{
-    width: 17%;
-    overflow: hidden;
-    padding-right: 1em;
-  }
-  .col-add{
-    width: 25%;
-    overflow: hidden;
-  }
-  .col-email{
-    width: 19%;
-    overflow: hidden;
-  }
-  .col-id{
-    width: 5%;
-    overflow: hidden;
-  }
-  .col-phone{
-    width: 12%;
-  }
-  .col-stat{
-    width: 4%;
-  }
-  .col-proc{
-    width: 4%;
-  }
-  .col-inc{
-    width: 4%;
-  }
-  td:nth-child(5) {
-    text-align: right;
-  }
+.col-name{
+  padding-right: 1em;
+}
+.col-name,.col-add,.col-email,.col-id{
+  overflow: hidden;
+}
+.col-name, .hd-name{
+  width: 19%;
+}
+.col-add, .hd-add{
+  width: 26%;
+}
+.col-email, .hd-email{
+  width: 20%;
+}
+.col-id, .hd-id{
+  width: 5%;
+}
+.col-phone, .hd-phone{
+  width: 13%;
+}
+.col-stat, .hd-stat{
+  width: 4%;
+}
+.col-proc, .hd-proc{
+  width: 4%;
+}
+.col-inc, .hd-inc{
+  width: 4%;
+}
+.contacts-header > div{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+td:nth-child(5) {
+  text-align: right;
+}
+.contacts-header > div:nth-child(5){
+  padding-left: 35px;
 }
 
 .cinc {
   cursor: pointer;
 }
 
-.patients{
-  height: 575px;
-  overflow-y: auto;
-  .tbl-patients{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 97%;
-  }
-  .col-patient{
-    width: 28%;
-    overflow: hidden;
-    padding-right: 1em;
-  }
-  .col-service{
-    width: 49%;
-    overflow: hidden;
-  }
-  .col-duedate{
-    width: 13%;
-    overflow: hidden;
-    text-align: center;
-  }
-  .col-include{
-    width: 10%;
-    overflow: hidden;
-    text-align: center;
-  }
-  
+.patients-header{
+  height: 2em;
+  padding-top: .5em;
+  width: 100%;
+  display: flex;
+  top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
+}
+.patients-tbl-container{
+  height: 545px;
+  overflow-y: scroll;
+
+}
+.tbl-patients{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 97%;
+  bottom: 0;
+}
+.col-patient, .pat-patient{
+  width: 25%;
+}
+.col-service, .pat-service{
+  width: 47%;
+}
+.col-duedate, .pat-duedate{
+  width: 16%;
+}
+.col-include, .pat-include{
+  width: 11%;
+}
+.col-patient, .col-service, .col-duedate, .col-include{
+  overflow: hidden;
+}
+.col-duedate, .col-include{
+  text-align: center;
+}
+.col-patient{
+  padding-right: 1em;
+}
+.pat-patient{
+  padding-left: 7px;
+}
+.pat-service{
+  width: 45%;
+}
+.pat-include{
+  padding-left: 5px;
 }
 .pinclude {
   cursor: pointer;
 }
 
-#actions{
-  margin-top: 2em;
-  height: 280px;
-  overflow-y: auto;
-  .tbl-actions{
-    margin-left: .5em;
-    table-layout: fixed;
-    white-space: nowrap;
-    border-collapse: collapse;
-    width: 98%;
-  }
-  .col-date{
-    width: 12%;
-    overflow: hidden;
-  }
-  .col-action{
-    width: 18%;
-    overflow: hidden;
-  }
-  .col-notes{
-    width: 69%;
-    overflow: hidden;
-  }
+.bottom-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0 2em;
 }
+.actions-box{
+  width: 1175px;
+  height: 323px;
+  position: relative;
+}
+.actions-header{
+  height: 2em;
+  padding-top: .5em;
+  width: 103%;
+  display: flex;
+  top: 0;
+  margin-left: .5em;
+  //border: 1px black solid;
+}
+
+.actions-list{
+  //margin-top: 2em;
+  height: 284px;
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 8px;
+}
+.tbl-actions{
+  margin-left: .5em;
+  table-layout: fixed;
+  white-space: nowrap;
+  border-collapse: collapse;
+  width: 98%;
+}
+
+.col-date, .col-action, .col-notes{
+  overflow: hidden;
+}
+.col-date, .act-date{
+  width: 12%;
+}
+.col-action, .act-action{
+  width: 18%;
+}
+.col-notes, .act-notes{
+  width: 65%;
+}
+.act-date, .act-action, .act-notes{
+  padding: 0 7px;
+}
+
 #action-select{
   border: none;
   width: 13.5em;
   background-color: white;
-  color: rgb(40, 69, 217);
-  //Need JS to set color to blk when selected, revert when SAVE'd
 }
-::placeholder{
-  color: rgb(40, 69, 217);
+.select-def, ::placeholder{
+  color: rgb(116, 123, 160);
+  font-style: italic;
 }
-.action-container{
-  // border: 1px black solid;
+.select-change{
+  color: black;
+  font-style: normal;
+}
+#save-button:disabled {
+  color: rgb(116, 123, 160);
+  cursor: not-allowed;
+}
+#save-button:enabled {
+  color: white;
+  cursor: pointer;
+  background-color: $primary;
+}
+
+
+
+.new-action-container{
+  //border: 1px black solid;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 100%;
-}
+  align-items: center;
+  width: 1175px
+} 
 .new-action{
   margin-right: 1em;
 }
-.save-action-ready{ //button settings when action is selected
-  color: black;
-  background-color: rgb(138, 182, 138);
-}  //reset colors if new contact is selected
+
 #standard-select{
   color: rgb(40, 69, 217);
 }
 
-.note-box{
+.new-note-box{
   position: relative;
-  width: 700px;
+  width: 575px;
   //border: 1px black solid;
+  margin-right: 1em;
+}
+
+.new-note{
+  width: 100%;
+  background-color: white;
+  margin: .75em .75em;
+  height: 1.5em;
+  padding: 3px;
+  border-radius: 10px 10px;
+  position: relative;
   right: 5px;
-  .new-note{
-    width: 85%;
-    background-color: white;
-    margin: .75em .75em;
-    height: 1.25em;
-    padding: 3px;
-    border-radius: 10px 10px;
-    position: relative;
-    right: 5px;
-    #note-input {
-      appearance: none;
-      background-color: transparent;
-      border: none;
-      padding-left: 2em;
-      width: 75%;
-      font-family: inherit;
-      font-size: inherit;
-      cursor: pointer;
-      line-height: inherit;
-      position: absolute;
-      align-self: flex-start;
-      &:focus{
-        outline: none;
-      }
-    }
+  display: flex;
+  align-items: center;
+}
+.new-note-input {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding-left: 2em;
+  width: 90%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  position: absolute;
+  &:focus{
+    outline: none;
   }
-  .note-save-button{
-    position: absolute;
-    align-self: flex-end;
-    width: 10%;
-    top: 12px;
-    right: 10px;
-  }
-  #save-button{
-    width: 100%;
-    background-color: lightgray;
-    appearance: none;
-    border: none;
-    border-radius: 5px 5px;
-    font-size: inherit;
-    font-family: inherit;
-  }
+}
+.note-save-box{
+  position: relative;
+  margin-right: 1.5em;
+}
+#save-button{
+  width: 4.5em;
+  background-color: rgb(224, 226, 238);
+  appearance: none;
+  border: none;
+  border-radius: 5px 5px;
+  font-size: inherit;
+  font-family: inherit;
+  height: 1.75em;
+  padding-top: 4px;
+  margin-left: 1em;
 }
 
 table{
   top: 0;
+  table-layout: fixed;
 }
 
 td img{
@@ -347,35 +440,25 @@ td.cproc{
   text-align: center;
 }
 
-thead{
-  position: sticky;
-  top: 0;
-  background-color: $box-highligh;
-}
-
-.tbl-header{
-  // position: sticky;
-  // inset-block-start: 0;
-  color: rgb(52, 52, 52);
-  th{
-    font-weight: normal;
-    font-size: .85em;
-    text-transform: uppercase;
-    text-align: left;
-    padding-top: .8em;
-    padding-left: .3em;
-    padding-bottom: .4em;
-    background-color: $box-highligh;
-  }
-}
-
-
 .truncate{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+/* ----------Cell Fade in/out on click test */
+#msgWarning {
+  opacity: 0;
+  transition: 1s;
+  color: red;
+}
+#msgWarning.msgfade-in {
+  opacity: 1;
+  transition: 1s;
+}
+#msgWarning.msghide {
+  display: none;
+}
+ /* ----------Cell Fade END------- */
 
 
 
