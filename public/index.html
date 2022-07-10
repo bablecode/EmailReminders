@@ -49,11 +49,11 @@ display for no records found
           <div class="hd-name">Name</div>
           <div class="hd-add">Address</div>
           <div class="hd-email">Email</div>
-          <div class="hd-id">ID</div>
+          <div class="hd-id" title="Cornerstone Client ID">ID</div>
           <div class="hd-phone">Phone</div>
-          <div class="hd-stat">Stat</div>
-          <div class="hd-proc">Proc</div>
-          <div class="hd-inc">Inc</div>
+          <div class="hd-stat" title="Cornerstone Client Status">Stat</div>
+          <div class="hd-proc" title="Processed or Unprocessed">Proc</div>
+          <div class="hd-inc" title="Include when generating email">Inc</div>
         </div>
         <div class="contacts-tbl-container">
           <table class="tbl-contacts">
@@ -262,8 +262,8 @@ display for no records found
     <div class="bottom-container ">
       <div class="new-action-container">
         <div class="select new-action">
-          <select name="action-select" id="action-select">
-            <option value="0" selected disabled hidden>New Action...</option>
+          <select name="action-select" id="action-select" class="select-def" onchange="toggleActionDisplay(this)">
+            <option value="0" selected disabled hidden>New action...</option>
             <option value="10">Emailed</option>
             <option value="11">Processed</option>
             <option value="13">Left Message</option>
@@ -272,27 +272,16 @@ display for no records found
         </div>
         <div class="new-note-box">
           <div class="new-note">
-            <input type="text" name="note-input" class="new-note-input" placeholder="Optional note...">
+            <input type="text" name="note-input" class="new-note-input select-def" onfocusin="actionInputIN(this)" onfocusout="actionInputOUT(this)" placeholder="Optional note...">
           </div>
         </div> 
         <div class="note-save-box" >
-          <button type="submit" id="save-button">Save</button>
+          <button type="submit" id="save-button" class="btnDisabled" disabled title="New Action is required">Save</button>
         </div>
       </div>
       
     </div>
   </div>
-  <!-- <div class="right-col">
-        <ul>
-          <li>New Action:</li>
-          <ul>
-            <li>Def color=grey, change when input is detected</li>
-            <li>Change SAVE button stype when action type selected</li>
-            <li>Save is disabled until action type selected</li>
-          </ul>
-          <li>bg-box - move tables up from 0</li>
-        </ul>
-      -->
 
   <script type="application/javascript" src="main.js"></script>
 </body>

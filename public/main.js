@@ -17,7 +17,7 @@ async function addNote(){
   
   const t = document.querySelector('.tbl-contacts');
   //loop all rows to remove class 'row-selected'
-  for (let i = 1; i < t.rows.length; i++) {
+  for (let i = 0; i < t.rows.length; i++) {
     const e = t.rows[i].classList.contains('row-selected');
     if(e){
       vcontactID = t.rows[i].cells[0].lastElementChild.textContent;
@@ -45,9 +45,17 @@ async function addNote(){
    })
 
 };
+
 function clrActionInputs(){
-  document.querySelector('#action-select').value = 0;
-  document.querySelector(".new-note-input").value = '';
+  const sel = document.querySelector('#action-select');
+  const inp = document.querySelector(".new-note-input");
+  if(sel.value != 0){
+    sel.value = 0;
+    toggleActionDisplay(sel);
+  }
+  inp.value = '';
+  actionInputOUT(inp);
+
 }
 
 
@@ -192,6 +200,7 @@ function toggleSelect(x){
   const y = x.classList.contains('row-selected');
   const recordID = x.cells[0].lastElementChild.textContent;
   const contactID = x.cells[3].innerText;
+  clrActionInputs();
   //if not currently selected:
   if(!y){
     const t = document.querySelector('.tbl-contacts');
@@ -209,7 +218,6 @@ function toggleSelect(x){
   getPatients(recordID);
   //load actions
   getActions(contactID);
-  clrActionInputs();
 }
 
 function contactToggleINC(x, caller) {
@@ -279,9 +287,32 @@ function toggleIncDisplay(cell, caller){
   }
 };
 
-function getSelectContactInfo(recUID, clientID){
-
+function toggleActionDisplay(x){
+  //change input colors
+  if(x.value != 0){
+    x.classList.remove('select-def');
+    x.classList.add('select-change');
+    document.querySelector('#save-button').disabled = false;
+    document.querySelector('#save-button').title = '';
+  }else{
+    x.classList.remove('select-change');
+    x.classList.add('select-def');
+    document.querySelector('#save-button').disabled = true;
+    document.querySelector('#save-button').title = 'New Action is required';
+  }
 }
+function actionInputIN(x){
+  //clr placeholder while typing, change color select-change
+  x.placeholder='';
+  x.classList.add('select-change');
+};
+function actionInputOUT(x){
+  //if empty: add placeholder, reset color select-def
+  if(x.value==''){
+    x.placeholder='Optional note...'
+    x.classList.add('select-def');
+  }
+};
 
 function formatDate(date) {
   var d = new Date(date),
@@ -295,7 +326,7 @@ function formatDate(date) {
       day = '0' + day;
 
   return [year, month, day].join('-');
-}
+};
 
 function showMsgWarning(elementWithMsg){
   //pass in element with hidden text
@@ -310,4 +341,4 @@ function showMsgWarning(elementWithMsg){
       }, 1000);
     }, 2000);
   });
-}
+};

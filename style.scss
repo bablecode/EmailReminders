@@ -336,12 +336,27 @@ td:nth-child(5) {
   border: none;
   width: 13.5em;
   background-color: white;
-  color: rgb(40, 69, 217);
-  //Need JS to set color to blk when selected, revert when SAVE'd
 }
-::placeholder{
-  color: rgb(40, 69, 217);
+.select-def, ::placeholder{
+  color: rgb(116, 123, 160);
+  font-style: italic;
 }
+.select-change{
+  color: black;
+  font-style: normal;
+}
+#save-button:disabled {
+  color: rgb(116, 123, 160);
+  cursor: not-allowed;
+}
+#save-button:enabled {
+  color: white;
+  cursor: pointer;
+  background-color: $primary;
+}
+
+
+
 .new-action-container{
   //border: 1px black solid;
   display: flex;
@@ -353,10 +368,7 @@ td:nth-child(5) {
 .new-action{
   margin-right: 1em;
 }
-.save-action-ready{ //button settings when action is selected
-  color: black;
-  background-color: rgb(138, 182, 138);
-}  //reset colors if new contact is selected
+
 #standard-select{
   color: rgb(40, 69, 217);
 }
@@ -367,7 +379,7 @@ td:nth-child(5) {
   //border: 1px black solid;
   margin-right: 1em;
 }
-//right: 5px;
+
 .new-note{
   width: 100%;
   background-color: white;
@@ -400,15 +412,16 @@ td:nth-child(5) {
   margin-right: 1.5em;
 }
 #save-button{
-  //width: 100%;
+  width: 4.5em;
   background-color: rgb(224, 226, 238);
   appearance: none;
   border: none;
   border-radius: 5px 5px;
   font-size: inherit;
   font-family: inherit;
-  height: 1.5em;
-  color: darkgray;
+  height: 1.75em;
+  padding-top: 4px;
+  margin-left: 1em;
 }
 
 table{
