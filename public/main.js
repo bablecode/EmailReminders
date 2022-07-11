@@ -7,6 +7,7 @@ filterDDL.addEventListener("change", (event) => {
 window.addEventListener('DOMContentLoaded', (event) => {
   getContacts('ALL');
 });
+document.querySelector('#searchy').addEventListener('keyup', searchList, false);
 
 
 async function addNote(){
@@ -313,6 +314,25 @@ function actionInputOUT(x){
     x.classList.add('select-def');
   }
 };
+
+function searchList(event) {
+  let filter = event.target.value.toUpperCase();
+  let rows = document.querySelector(".tbl-body").rows;
+  
+  for (let i = 0; i < rows.length; i++) {
+      let col1 = rows[i].cells[0].textContent.toUpperCase();
+      let col2 = rows[i].cells[1].textContent.toUpperCase();
+      let col3 = rows[i].cells[2].textContent.toUpperCase();
+      let col4 = rows[i].cells[3].textContent.toUpperCase();
+      let col5 = rows[i].cells[4].textContent.toUpperCase();
+      if (col1.indexOf(filter) > -1 || col2.indexOf(filter) > -1 || col3.indexOf(filter) > -1 || col4.indexOf(filter) > -1 || col5.indexOf(filter) > -1) {
+          rows[i].style.display = "";
+      } else {
+          rows[i].style.display = "none";
+      }      
+  }
+}
+
 
 function formatDate(date) {
   var d = new Date(date),
