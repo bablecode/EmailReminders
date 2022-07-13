@@ -8,6 +8,7 @@ Todo:
  - Concat Patient ID to Patient name
  - Toggle Processed status based on Action selected. 
  - Create central errorHandler/logging
+ - Validate Action Note text
  - Add new actions: 
  - - To Call
  - - Scheduled
