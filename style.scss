@@ -39,7 +39,7 @@ body {
 .container{
   display: flex;
   place-content: space-between;
-  margin: 0 5em;
+  margin: 0 3em;
   align-items: center;
   //border: 1px black solid;
 }
@@ -99,8 +99,8 @@ button{
 }
 .upper-container{
   display: flex;
-  gap: 2em;
-  margin: 0 2em 2em 2em;
+  gap: 1em;
+  margin: 0 1em 2em 2em;
 }
 .left-col{
   flex: 0 0 1175px;
@@ -133,6 +133,7 @@ button{
   position: absolute;
   bottom: 8px;
 }
+
 .tbl-contacts{
   margin-left: .5em;
   table-layout: fixed;
@@ -317,7 +318,7 @@ td:nth-child(5) {
 }
 .actions-box{
   width: 1175px;
-  height: 323px;
+  height: 260px;
   position: relative;
 }
 .actions-header{
@@ -332,7 +333,7 @@ td:nth-child(5) {
 
 .actions-list{
   //margin-top: 2em;
-  height: 284px;
+  height: 220px;
   overflow-y: scroll;
   position: absolute;
   bottom: 8px;

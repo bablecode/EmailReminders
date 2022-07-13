@@ -10,7 +10,7 @@ const config = require('../config/config');
 // };
 
 async function getPatients(recordID){
-  const sql = 'CALL sp_getPatients(?)';
+  const sql = 'CALL sp_PatientsGetAll(?)';
   const [rows, fields] = await db.query(sql,[recordID]);
   return rows[0];
 };
