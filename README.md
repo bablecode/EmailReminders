@@ -24,3 +24,5 @@ Todo:
  - - Complete email testing
  - - Log email status success/fail/account/date_time
  - - Connect to UI button
+ - 
+![Email Reminder](https://user-images.githubusercontent.com/108896363/178858441-7df61143-873c-4bfb-9724-9427c2e6eb80.jpg)
