@@ -3,7 +3,7 @@
 Description: Import service reminder CSV from Cornerstone PMS. Provide users interface to manage which reminders will process through email. Provide history of actioins taken with each reminder record.
 
 Todo: 
- - Warn user that Processed record needs to be reopened to make as Included for email. Possible prompt w/ option to reopen. 
+ - Warn user that Processed record needs to be reopened to set as Included for email. Possible prompt w/ option to reopen. 
  - Link to open help document
  - Concat Patient ID to Patient name
  - Toggle Processed status based on Action selected. 
